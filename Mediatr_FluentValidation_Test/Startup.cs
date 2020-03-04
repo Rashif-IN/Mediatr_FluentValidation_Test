@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Mediatr_FluentValidation_Test.Model;
 using Mediatr_FluentValidation_Test.Validator;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -34,16 +36,16 @@ namespace Mediatr_FluentValidation_Test
         {
             services.AddControllers();
 
-            services.AddDbContext<Contextt>(option => option.UseNpgsql("Host=localhost;Database=authtestdb;Username=postgres;Password=docker;"));
+            services.AddDbContext<Contextt>(option => option.UseNpgsql("Host=localhost;Database=mediatrdluentvalidDB;Username=postgres;Password=docker;"));
 
-            services.AddMvc()
-                    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CustomerValidator>());
-            services.AddMvc()
-                    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CustomerPCValidator>());
-            services.AddMvc()
-                    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<MerchantValidator>());
-            services.AddMvc()
-                    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ProductsValidator>());
+            services.AddMvc().AddFluentValidation();
+
+            //services.AddMvc()
+            //        .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CustomerPCValidator>());
+            //services.AddMvc()
+            //        .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<MerchantValidator>());
+            //services.AddMvc()
+            //        .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ProductsValidator>());
 
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -58,6 +60,11 @@ namespace Mediatr_FluentValidation_Test
                     ValidateAudience = false,
                 };
             });
+
+            services.AddTransient<IValidator<Customers>, CustomerValidator>()
+                .AddTransient<IValidator<Customer_Payment_Card>, CustomerPCValidator>()
+                .AddTransient<IValidator<Merhcant>, MerchantValidator>()
+                .AddTransient<IValidator<Products>, ProductsValidator>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidator<,>));
         }

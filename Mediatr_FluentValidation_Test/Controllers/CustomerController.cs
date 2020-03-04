@@ -23,7 +23,7 @@ namespace Mediatr_FluentValidation_Test.Controllers
         public IActionResult Get()
         {
             List<object> allData = new List<object>();
-            var data = konteks.Customers;
+            var data = konteks.Customer;
             foreach (var x in data)
             {
                 allData.Add(new { x.id, x.full_name, x.username, x.birthdate, x.password, x.email, x.phone_number });
@@ -34,7 +34,7 @@ namespace Mediatr_FluentValidation_Test.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int ID)
         {
-            var data = konteks.Customers.Find(ID);
+            var data = konteks.Customer.Find(ID);
 
             if (data == null)
             {
@@ -47,7 +47,7 @@ namespace Mediatr_FluentValidation_Test.Controllers
         [HttpPost]
         public IActionResult Post(Customers data)
         {
-            konteks.Customers.Add(data);
+            konteks.Customer.Add(data);
             konteks.SaveChanges();
             return Ok();
         }
@@ -55,7 +55,7 @@ namespace Mediatr_FluentValidation_Test.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Customers data)
         {
-            var query = konteks.Customers.Find(id);
+            var query = konteks.Customer.Find(id);
             query.full_name = data.full_name;
             query.username = data.username;
             query.birthdate = data.birthdate;
@@ -71,14 +71,14 @@ namespace Mediatr_FluentValidation_Test.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var data = await konteks.Customers.FindAsync(id);
+            var data = await konteks.Customer.FindAsync(id);
 
             if (data == null)
             {
                 return NotFound(new { Message = "Customer not found", Status = false });
             }
 
-            konteks.Customers.Remove(data);
+            konteks.Customer.Remove(data);
             await konteks.SaveChangesAsync();
 
             return Ok();

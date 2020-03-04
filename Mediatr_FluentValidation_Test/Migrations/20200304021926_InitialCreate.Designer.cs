@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mediatr_FluentValidation_Test.Migrations
 {
     [DbContext(typeof(Contextt))]
-    [Migration("20200303101930_InitialCreate")]
+    [Migration("20200304021926_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,42 @@ namespace Mediatr_FluentValidation_Test.Migrations
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
                 .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            modelBuilder.Entity("Mediatr_FluentValidation_Test.Model.Customer_Payment_Card", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("created_at")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("credit_card_number")
+                        .HasColumnType("text");
+
+                    b.Property<int>("customer_id")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("exp_month")
+                        .HasColumnType("text");
+
+                    b.Property<string>("exp_year")
+                        .HasColumnType("text");
+
+                    b.Property<string>("name_on_card")
+                        .HasColumnType("text");
+
+                    b.Property<int>("postal_code")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("updated_at")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("id");
+
+                    b.ToTable("CPC");
+                });
 
             modelBuilder.Entity("Mediatr_FluentValidation_Test.Model.Customers", b =>
                 {
@@ -57,7 +93,37 @@ namespace Mediatr_FluentValidation_Test.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customer");
+                });
+
+            modelBuilder.Entity("Mediatr_FluentValidation_Test.Model.Merhcant", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("address")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("created_at")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("image")
+                        .HasColumnType("text");
+
+                    b.Property<string>("name")
+                        .HasColumnType("text");
+
+                    b.Property<double>("rating")
+                        .HasColumnType("double precision");
+
+                    b.Property<DateTime>("updated_at")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("id");
+
+                    b.ToTable("merhcants");
                 });
 
             modelBuilder.Entity("Mediatr_FluentValidation_Test.Model.Products", b =>
@@ -84,7 +150,7 @@ namespace Mediatr_FluentValidation_Test.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 #pragma warning restore 612, 618
         }

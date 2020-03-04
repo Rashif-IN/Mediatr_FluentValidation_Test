@@ -8,9 +8,9 @@ namespace Mediatr_FluentValidation_Test
 
     {
         public Contextt(DbContextOptions<Contextt> opt) : base(opt) { }
-
-        public DbSet<Customers> Customers { get; set; }
-        public DbSet<Products> Products { get; set; }
+       
+        public DbSet<Customers> Customer { get; set; }
+        public DbSet<Products> Product { get; set; }
         public DbSet<Customer_Payment_Card> CPC { get; set; }
         public DbSet<Merhcant> merhcants { get; set; }
 
