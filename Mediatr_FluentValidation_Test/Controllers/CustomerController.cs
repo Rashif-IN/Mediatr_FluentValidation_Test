@@ -43,6 +43,14 @@ namespace Mediatr_FluentValidation_Test.Controllers
         public IActionResult Post(RequestData<Customers> data)
         {
             konteks.Customer.Add(data.Dataa.Attributes);
+            if(data.Dataa.Attributes.sex == "male")
+            {
+                data.Dataa.Attributes.gender = kelamin.male;
+            }
+            else if(data.Dataa.Attributes.sex == "female")
+            {
+                data.Dataa.Attributes.gender = kelamin.female;
+            }
             konteks.SaveChanges();
             return Ok();
         }

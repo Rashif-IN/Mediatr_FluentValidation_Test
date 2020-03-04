@@ -6,9 +6,15 @@ namespace Mediatr_FluentValidation_Test.Model
     
     public enum kelamin
     {
-        man = 0,
-        woman = 1,
-        unknown = 2
+        male = 1,
+        female,
+        transexual_male,
+        transexual_female,
+        Metrosexual_male,
+        Metrosexual_female,
+        male_but_curious_what_being_female_is_like,
+        female_but_curious_what_being_male_is_like
+
     }
 
     
@@ -20,6 +26,7 @@ namespace Mediatr_FluentValidation_Test.Model
         public DateTime birthdate { get; set; }
         public string password { get; set; }
         public kelamin gender { get; set; }
+        public string sex { get; set; }
         public string email { get; set; }
         public string phone_number { get; set; }
         public DateTime created_at { get; set; } = DateTime.Now;
