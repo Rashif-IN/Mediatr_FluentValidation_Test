@@ -55,10 +55,10 @@ namespace Mediatr_FluentValidation_Test
                 };
             });
 
-            services.AddTransient<IValidator<Customers>, CustomerValidator>()
-                .AddTransient<IValidator<Customer_Payment_Card>, CustomerPCValidator>()
-                .AddTransient<IValidator<Merhcant>, MerchantValidator>()
-                .AddTransient<IValidator<Products>, ProductsValidator>();
+            services.AddTransient<IValidator<RequestData<Customers>>, CustomerValidator>()
+                .AddTransient<IValidator<RequestData<Customer_Payment_Card>>, CustomerPCValidator>()
+                .AddTransient<IValidator<RequestData<Merhcant>>, MerchantValidator>()
+                .AddTransient<IValidator<RequestData<Products>>, ProductsValidator>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidator<,>));
         }

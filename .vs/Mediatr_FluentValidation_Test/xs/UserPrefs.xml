@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{F1AB1BF9-A0B9-4243-9E8F-E3B9F7A1C1E5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Mediatr_FluentValidation_Test/Controllers/ProductController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mediatr_FluentValidation_Test/Startup.cs">
     <Files>
-      <File FileName="Mediatr_FluentValidation_Test/Controllers/ProductController.cs" Line="49" Column="37" />
-      <File FileName="Mediatr_FluentValidation_Test/Controllers/CPCController.cs" Line="11" Column="15" />
-      <File FileName="Mediatr_FluentValidation_Test/Controllers/MerchantController.cs" Line="11" Column="16" />
+      <File FileName="Mediatr_FluentValidation_Test/Controllers/ProductController.cs" Line="31" Column="14" />
+      <File FileName="Mediatr_FluentValidation_Test/Controllers/CPCController.cs" Line="12" Column="24" />
+      <File FileName="Mediatr_FluentValidation_Test/Controllers/MerchantController.cs" Line="60" Column="49" />
       <File FileName="Mediatr_FluentValidation_Test/Model/ModelClass.cs" Line="76" Column="6" NotebookId="1" />
       <File FileName="Mediatr_FluentValidation_Test/Contextt.cs" Line="15" Column="55" NotebookId="1" />
-      <File FileName="Mediatr_FluentValidation_Test/Validator/AllValidator.cs" Line="31" Column="57" NotebookId="1" />
-      <File FileName="Mediatr_FluentValidation_Test/Controllers/CustomerController.cs" Line="53" Column="51" NotebookId="1" />
+      <File FileName="Mediatr_FluentValidation_Test/Validator/AllValidator.cs" Line="55" Column="10" NotebookId="1" />
+      <File FileName="Mediatr_FluentValidation_Test/Controllers/CustomerController.cs" Line="2" Column="34" NotebookId="1" />
+      <File FileName="Mediatr_FluentValidation_Test/Startup.cs" Line="58" Column="46" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,11 +18,10 @@
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="ProductController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Model" expanded="True" />
               <Node name="Validator" expanded="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
