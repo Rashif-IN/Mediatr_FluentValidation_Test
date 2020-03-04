@@ -46,20 +46,20 @@ namespace Mediatr_FluentValidation_Test.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Products data)
+        public IActionResult Post(RequestData<Products> data)
         {
-            konteks.Product.Add(data);
+            konteks.Product.Add(data.Dataa.Attributes);
             konteks.SaveChanges();
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Products data)
+        public IActionResult Put(int id, RequestData<Products> data)
         {
             var query = konteks.Product.Find(id);
-            query.merhcant_id = data.merhcant_id;
-            query.name = data.name;
-            query.price = data.price;
+            query.merhcant_id = data.Dataa.Attributes.merhcant_id;
+            query.name = data.Dataa.Attributes.name;
+            query.price = data.Dataa.Attributes.price;
             query.updated_at = DateTime.Now;
             konteks.SaveChanges();
             return NoContent();

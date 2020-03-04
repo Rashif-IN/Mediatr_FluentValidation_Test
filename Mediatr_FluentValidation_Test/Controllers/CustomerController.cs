@@ -22,13 +22,8 @@ namespace Mediatr_FluentValidation_Test.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            List<object> allData = new List<object>();
             var data = konteks.Customer;
-            foreach (var x in data)
-            {
-                allData.Add(new { x.id, x.full_name, x.username, x.birthdate, x.password, x.email, x.phone_number });
-            }
-            return Ok(new { Message = "Success retreiving data", Status = true, Data = allData });
+            return Ok(new { Message = "Success retreiving data", Status = true, Data = data });
         }
 
         [HttpGet("{id}")]
@@ -45,24 +40,24 @@ namespace Mediatr_FluentValidation_Test.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Customers data)
+        public IActionResult Post(RequestData<Customers> data)
         {
-            konteks.Customer.Add(data);
+            konteks.Customer.Add(data.Dataa.Attributes);
             konteks.SaveChanges();
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Customers data)
+        public IActionResult Put(int id, RequestData<Customers> data)
         {
             var query = konteks.Customer.Find(id);
-            query.full_name = data.full_name;
-            query.username = data.username;
-            query.birthdate = data.birthdate;
-            query.password = data.password;
-            query.gender = data.gender;
-            query.email = data.email;
-            query.phone_number = data.phone_number;
+            query.full_name = data.Dataa.Attributes.full_name;
+            query.username = data.Dataa.Attributes.username;
+            query.birthdate = data.Dataa.Attributes.birthdate;
+            query.password = data.Dataa.Attributes.password;
+            query.gender = data.Dataa.Attributes.gender;
+            query.email = data.Dataa.Attributes.email;
+            query.phone_number = data.Dataa.Attributes.phone_number;
             query.updated_at = DateTime.Now;
             konteks.SaveChanges();
             return NoContent();

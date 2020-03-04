@@ -10,6 +10,7 @@ namespace Mediatr_FluentValidation_Test.Model
         woman = 1,
         unknown = 2
     }
+
     
     public class Customers
     {
@@ -19,6 +20,19 @@ namespace Mediatr_FluentValidation_Test.Model
         public DateTime birthdate { get; set; }
         public string password { get; set; }
         public kelamin gender { get; set; }
+        public string email { get; set; }
+        public string phone_number { get; set; }
+        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime updated_at { get; set; } = DateTime.Now;
+    }
+    public class CustomerResponse
+    {
+        public int id { get; set; }
+        public string full_name { get; set; }
+        public string username { get; set; }
+        public DateTime birthdate { get; set; }
+        public string password { get; set; }
+        public string gender { get; set; }
         public string email { get; set; }
         public string phone_number { get; set; }
         public DateTime created_at { get; set; } = DateTime.Now;
@@ -60,4 +74,13 @@ namespace Mediatr_FluentValidation_Test.Model
         public string Username { get; set; }
         public string Password { get; set; }
     }
+    public class RequestData<T>
+    {
+        public Data<T> Dataa { get; set; }
+    }
+    public class Data<T>
+    {
+        public T Attributes { get; set; }
+    }
+
 }

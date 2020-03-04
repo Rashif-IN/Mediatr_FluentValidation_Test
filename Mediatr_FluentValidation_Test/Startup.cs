@@ -40,13 +40,7 @@ namespace Mediatr_FluentValidation_Test
 
             services.AddMvc().AddFluentValidation();
 
-            //services.AddMvc()
-            //        .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CustomerPCValidator>());
-            //services.AddMvc()
-            //        .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<MerchantValidator>());
-            //services.AddMvc()
-            //        .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ProductsValidator>());
-
+            
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -82,6 +76,8 @@ namespace Mediatr_FluentValidation_Test
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
